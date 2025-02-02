@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Color System Example</title>
+	<style>
+		/* First include your generated color system CSS here */
+		:root {
+			--cl-primary: #0d6efd;
+			--cl-secondary: #6c757d;
+			--cl-success: #198754;
+			--cl-info: #0dcaf0;
+			--cl-warning: #ffc107;
+			--cl-danger: #dc3545;
+			--cl-light: #f8f9fa;
+			--cl-dark: #212529;
+			--cl-gradient-1: linear-gradient(to right, #4f46e5, #0ea5e9);
+			--cl-gradient-2: linear-gradient(to right, #8b5cf6, #d946ef);
+			--cl-gradient-3: linear-gradient(to right, #06b6d4, #3b82f6);
+		}
+
+		.cl-bg-primary { background-color: var(--cl-primary); }
+		.cl-bg-secondary { background-color: var(--cl-secondary); }
+		.cl-bg-success { background-color: var(--cl-success); }
+		.cl-bg-info { background-color: var(--cl-info); }
+		.cl-bg-warning { background-color: var(--cl-warning); }
+		.cl-bg-danger { background-color: var(--cl-danger); }
+		.cl-bg-light { background-color: var(--cl-light); }
+		.cl-bg-dark { background-color: var(--cl-dark); }
+
+		.cl-bg-gradient-1 { background: var(--cl-gradient-1); }
+		.cl-bg-gradient-2 { background: var(--cl-gradient-2); }
+		.cl-bg-gradient-3 { background: var(--cl-gradient-3); }
+
+		/* Basic styling for the example */
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+			margin: 0;
+			padding: 20px;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.grid {
+			display: grid;
+			gap: 1rem;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			margin-bottom: 2rem;
+		}
+
+		.color-block {
+			padding: 1rem;
+			border-radius: 0.5rem;
+			color: white;
+			font-family: monospace;
+			font-size: 0.875rem;
+		}
+
+		.gradient-block {
+			padding: 2rem;
+			border-radius: 0.5rem;
+			color: white;
+			font-family: monospace;
+			font-size: 0.875rem;
+			margin-bottom: 1rem;
+		}
+
+		/* Light text for light backgrounds */
+		.cl-bg-light, .cl-bg-warning, .cl-bg-info {
+			color: #000;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h1>Color System Example</h1>
+
+	<h2>Theme Colors</h2>
+	<div class="grid">
+		<div class="color-block cl-bg-primary">primary<br>#0d6efd</div>
+		<div class="color-block cl-bg-secondary">secondary<br>#6c757d</div>
+		<div class="color-block cl-bg-success">success<br>#198754</div>
+		<div class="color-block cl-bg-danger">danger<br>#dc3545</div>
+		<div class="color-block cl-bg-warning">warning<br>#ffc107</div>
+		<div class="color-block cl-bg-info">info<br>#0dcaf0</div>
+		<div class="color-block cl-bg-light">light<br>#f8f9fa</div>
+		<div class="color-block cl-bg-dark">dark<br>#212529</div>
+	</div>
+
+	<h2>Gradients</h2>
+	<div class="gradient-block cl-bg-gradient-1">gradient-1<br>#4f46e5 → #0ea5e9</div>
+	<div class="gradient-block cl-bg-gradient-2">gradient-2<br>#8b5cf6 → #d946ef</div>
+	<div class="gradient-block cl-bg-gradient-3">gradient-3<br>#06b6d4 → #3b82f6</div>
+</div>
+</body>
+</html>
