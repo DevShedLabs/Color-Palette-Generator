@@ -47,6 +47,7 @@ const defaultThemeColors = {
 
 function ColorPaletteGenerator() {
     const [ showCSS, setShowCSS ]           = useState( false );
+    const [ showColors, setShowColors ]     = useState( false );
     const [ showHTML, setShowHTML ]         = useState( false );
     const [ copiedColor, setCopiedColor ]   = useState( '' );
     const [ themeColors, setThemeColors ]   = useState( defaultThemeColors );
@@ -184,19 +185,6 @@ function ColorPaletteGenerator() {
 
         css += '}\n\n';
 
-        // Add utility classes
-        Object.entries( baseColors ).forEach( ( [ name ] ) => {
-            css += `.cl-${name} { color: var(--cl-${name}); }\n`;
-            css += `.cl-bg-${name} { background-color: var(--cl-${name}); }\n`;
-            for ( let i = 1; i <= 18; i++ ) {
-                const shade = i * 50;
-                if ( shade <= 900 ) {
-                    css += `.cl-${name}-${shade} { color: var(--cl-${name}-${shade}); }\n`;
-                    css += `.cl-bg-${name}-${shade} { background-color: var(--cl-${name}-${shade}); }\n`;
-                }
-            }
-        } );
-
         Object.entries( themeColors )
             .filter( ( [ name ] ) => !name.startsWith( 'gradient' ) )
             .forEach( ( [ name ] ) => {
@@ -209,6 +197,25 @@ function ColorPaletteGenerator() {
             .forEach( name => {
                 css += `.cl-bg-${name} { background: var(--cl-${name}); }\n`;
             } );
+
+        return css;
+    };
+
+    const generateColors = () => {
+        let css = ':root {\n';
+
+        // Add utility classes
+        Object.entries( baseColors ).forEach( ( [ name ] ) => {
+            css += `.cl-${name} { color: var(--cl-${name}); }\n`;
+            css += `.cl-bg-${name} { background-color: var(--cl-${name}); }\n`;
+            for ( let i = 1; i <= 18; i++ ) {
+                const shade = i * 50;
+                if ( shade <= 900 ) {
+                    css += `.cl-${name}-${shade} { color: var(--cl-${name}-${shade}); }\n`;
+                    css += `.cl-bg-${name}-${shade} { background-color: var(--cl-${name}-${shade}); }\n`;
+                }
+            }
+        } );
 
         return css;
     };
@@ -259,7 +266,10 @@ function ColorPaletteGenerator() {
 
             <div className="section">
                 <button className="button" onClick={() => setShowCSS( !showCSS )}>
-                    {showCSS ? 'Hide' : 'Show'} CSS
+                    {showCSS ? 'Hide' : 'Show'} Root / Theme CSS
+                </button>
+                <button style={{ marginLeft: '5px' }} className="button" onClick={() => setShowColors( !showColors )}>
+                    {showColors ? 'Hide' : 'Show'} Color Classes
                 </button>
                 <button style={{ marginLeft: '5px' }} className="button" onClick={() => setShowHTML( !showHTML )}>
                     {showHTML ? 'Hide' : 'Show'} HTML Example
@@ -286,6 +296,23 @@ function ColorPaletteGenerator() {
                             onClick={() => copyToClipboard( generateCSS() )}
                         >
                             Copy CSS
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            {showColors && (
+                <div className="section">
+                    <div style={{ position: 'relative' }}>
+                            <pre className="code-block">
+                                <code>{generateColors()}</code>
+                            </pre>
+                        <button
+                            className="button"
+                            style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}
+                            onClick={() => copyToClipboard( generateColors() )}
+                        >
+                            Copy Colors
                         </button>
                     </div>
                 </div>
@@ -338,7 +365,7 @@ function ColorPaletteGenerator() {
 
                 <div className="grid grid-cols-1 mt-4">
                     <h3 className="mb-0">Gradients</h3>
-                    <p className="mt-0">Click the HEX value to edit the start or end color</p>
+                    <p className="mt-0 instructions">Click the HEX value to edit the start or end color</p>
                     {Object.entries( themeColors )
                         .filter( ( [ name ] ) => name.startsWith( 'gradient' ) )
                         .map( ( [ name, gradient ] ) => (
