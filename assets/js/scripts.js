@@ -135,20 +135,25 @@ function ColorPaletteGenerator() {
             '\n' +
             '\t<h2>Theme Colors</h2>\n' +
             '\t<div class="grid">\n' +
-            '\t\t<div class="color-block cl-bg-primary">primary<br>#0d6efd</div>\n' +
-            '\t\t<div class="color-block cl-bg-secondary">secondary<br>#6c757d</div>\n' +
-            '\t\t<div class="color-block cl-bg-success">success<br>#198754</div>\n' +
-            '\t\t<div class="color-block cl-bg-danger">danger<br>#dc3545</div>\n' +
-            '\t\t<div class="color-block cl-bg-warning">warning<br>#ffc107</div>\n' +
-            '\t\t<div class="color-block cl-bg-info">info<br>#0dcaf0</div>\n' +
-            '\t\t<div class="color-block cl-bg-light">light<br>#f8f9fa</div>\n' +
-            '\t\t<div class="color-block cl-bg-dark">dark<br>#212529</div>\n' +
+            '\t\t<div class="color-block cl-bg-primary">primary</div>\n' +
+            '\t\t<div class="color-block cl-bg-secondary">secondary</div>\n' +
+            '\t\t<div class="color-block cl-bg-success">success</div>\n' +
+            '\t\t<div class="color-block cl-bg-danger">danger</div>\n' +
+            '\t\t<div class="color-block cl-bg-warning">warning</div>\n' +
+            '\t\t<div class="color-block cl-bg-info">info</div>\n' +
+            '\t\t<div class="color-block cl-bg-light">light</div>\n' +
+            '\t\t<div class="color-block cl-bg-dark">dark</div>\n' +
             '\t</div>\n' +
             '\n' +
+            '\t<h2>Backgrounds</h2>\n' +
+            '\t\t<div class="color-block cl-bg-primary-bg">primary-bg</div>\n' +
+            '\t\t<div class="color-block cl-bg-secondary-bg">secondary-bg</div>\n' +
+            '\t\t<div class="color-block cl-bg-tertiary-bg">tertiary-bg</div>\n' +
+            '\n' +
             '\t<h2>Gradients</h2>\n' +
-            '\t<div class="gradient-block cl-bg-gradient-1">gradient-1<br>#4f46e5 → #0ea5e9</div>\n' +
-            '\t<div class="gradient-block cl-bg-gradient-2">gradient-2<br>#8b5cf6 → #d946ef</div>\n' +
-            '\t<div class="gradient-block cl-bg-gradient-3">gradient-3<br>#06b6d4 → #3b82f6</div>\n' +
+            '\t<div class="gradient-block cl-bg-gradient-1">gradient-1</div>\n' +
+            '\t<div class="gradient-block cl-bg-gradient-2">gradient-2</div>\n' +
+            '\t<div class="gradient-block cl-bg-gradient-3">gradient-3</div>\n' +
             '</div>';
     };
     const generateCSS  = () => {

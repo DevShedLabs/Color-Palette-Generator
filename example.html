@@ -15,6 +15,9 @@
 			--cl-danger: #dc3545;
 			--cl-light: #f8f9fa;
 			--cl-dark: #212529;
+			--cl-primary-bg: #ffffff;
+			--cl-secondary-bg: #f8f9fa;
+			--cl-tertiary-bg: #6c6c6c;
 			--cl-gradient-1: linear-gradient(to right, #4f46e5, #0ea5e9);
 			--cl-gradient-2: linear-gradient(to right, #8b5cf6, #d946ef);
 			--cl-gradient-3: linear-gradient(to right, #06b6d4, #3b82f6);
@@ -28,6 +31,13 @@
 		.cl-bg-danger { background-color: var(--cl-danger); }
 		.cl-bg-light { background-color: var(--cl-light); }
 		.cl-bg-dark { background-color: var(--cl-dark); }
+
+		.cl-primary-bg { color: var(--cl-primary-bg); }
+		.cl-bg-primary-bg { background-color: var(--cl-primary-bg); }
+		.cl-secondary-bg { color: var(--cl-secondary-bg); }
+		.cl-bg-secondary-bg { background-color: var(--cl-secondary-bg); }
+		.cl-tertiary-bg { color: var(--cl-tertiary-bg); }
+		.cl-bg-tertiary-bg { background-color: var(--cl-tertiary-bg); }
 
 		.cl-bg-gradient-1 { background: var(--cl-gradient-1); }
 		.cl-bg-gradient-2 { background: var(--cl-gradient-2); }
@@ -58,6 +68,11 @@
 			color: white;
 			font-family: monospace;
 			font-size: 0.875rem;
+			border: 1px solid #ccc;
+		}
+
+		.mb-1 {
+			margin-bottom: 1rem;
 		}
 
 		.gradient-block {
@@ -73,6 +88,15 @@
 		.cl-bg-light, .cl-bg-warning, .cl-bg-info {
 			color: #000;
 		}
+
+		.text-dark {
+			color: #000;
+		}
+
+		.text-light {
+			color: #fff;
+		}
+
 	</style>
 </head>
 <body>
@@ -81,20 +105,50 @@
 
 	<h2>Theme Colors</h2>
 	<div class="grid">
-		<div class="color-block cl-bg-primary">primary<br>#0d6efd</div>
-		<div class="color-block cl-bg-secondary">secondary<br>#6c757d</div>
-		<div class="color-block cl-bg-success">success<br>#198754</div>
-		<div class="color-block cl-bg-danger">danger<br>#dc3545</div>
-		<div class="color-block cl-bg-warning">warning<br>#ffc107</div>
-		<div class="color-block cl-bg-info">info<br>#0dcaf0</div>
-		<div class="color-block cl-bg-light">light<br>#f8f9fa</div>
-		<div class="color-block cl-bg-dark">dark<br>#212529</div>
+		<div class="color-block cl-bg-primary">primary</div>
+		<div class="color-block cl-bg-secondary">secondary</div>
+		<div class="color-block cl-bg-success">success</div>
+		<div class="color-block cl-bg-danger">danger</div>
+		<div class="color-block cl-bg-warning">warning</div>
+		<div class="color-block cl-bg-info">info</div>
+		<div class="color-block cl-bg-light">light</div>
+		<div class="color-block cl-bg-dark">dark</div>
 	</div>
 
+	<h2>Backgrounds</h2>
+	<div class="color-block cl-bg-primary-bg mb-1 text-dark">primary-bg</div>
+	<div class="color-block cl-bg-secondary-bg mb-1 text-dark">secondary-bg</div>
+	<div class="color-block cl-bg-tertiary-bg mb-1">tertiary-bg</div>
+
 	<h2>Gradients</h2>
-	<div class="gradient-block cl-bg-gradient-1">gradient-1<br>#4f46e5 → #0ea5e9</div>
-	<div class="gradient-block cl-bg-gradient-2">gradient-2<br>#8b5cf6 → #d946ef</div>
-	<div class="gradient-block cl-bg-gradient-3">gradient-3<br>#06b6d4 → #3b82f6</div>
+	<div class="gradient-block cl-bg-gradient-1">gradient-1</div>
+	<div class="gradient-block cl-bg-gradient-2">gradient-2</div>
+	<div class="gradient-block cl-bg-gradient-3">gradient-3</div>
+</div>
+<div style="background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); color: white; padding: 24px; border-radius: 12px; max-height: 200px; overflow: hidden; font-family: system-ui, -apple-system, sans-serif;">
+	<div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1200px; margin: 0 auto;">
+		<div style="flex: 1;">
+			<h3 style="font-size: 24px; font-weight: bold; margin: 0 0 12px 0;">Transform Your Development Process with DevShed</h3>
+			<p style="margin: 0 0 16px 0; color: rgba(255,255,255,0.9);">AI-powered project management for modern development teams</p>
+			<span style="display: inline-block; background: #dd8e09; padding: 8px 16px; border-radius: 6px; margin: 10px 0;">Save over $300 per year</span>
+			<div style="display: flex; gap: 12px;">
+				<a href="https://devshed.io" target="_blank" style="display: inline-flex; align-items: center; background: white; color: #4F46E5; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; gap: 8px;">
+					Signup for Early-bird
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+				</a>
+			</div>
+		</div>
+		<div style="display: flex; align-items: center; gap: 32px; padding-left: 24px; border-left: 1px solid rgba(255,255,255,0.2);">
+			<div>
+				<div style="font-size: 24px; font-weight: bold;">40%</div>
+				<div style="color: rgba(255,255,255,0.9);">Money Savings</div>
+			</div>
+			<div>
+				<div style="font-size: 24px; font-weight: bold;">60%</div>
+				<div style="color: rgba(255,255,255,0.9);">Less Time</div>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>
