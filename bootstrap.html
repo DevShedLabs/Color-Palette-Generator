@@ -15,9 +15,9 @@
 			--danger:       #7c151f;
 			--light:        #f8f9fa;
 			--dark:         #212529;
-			--primary-bg:   #ffffff;
-			--secondary-bg: #e7e7e9;
-			--tertiary-bg:  #343438;
+			--bg-custom-1:   #ffffff;
+			--bg-custom-2: #e7e7e9;
+			--bg-custom-3:  #343438;
 			--gradient-1:   linear-gradient(to right, #4f46e5, #0ea5e9);
 			--gradient-2:   linear-gradient(to right, #22143d, #432776);
 			--gradient-3:   linear-gradient(to right, #0d0d0d, #333333);
@@ -80,10 +80,6 @@
 			background-color: var(--primary) !important;
 		}
 
-		.bg-secondary {
-			background-color: var(--secondary) !important;
-		}
-
 		.bg-success {
 			background-color: var(--success) !important;
 		}
@@ -112,15 +108,15 @@
 			background-color: var(--dark) !important;
 		}
 
-		.bg-primary {
-			background-color: var(--primary-bg);
+		.bg-custom-1 {
+			background-color: var(--bg-custom-1);
 		}
 
-		.bg-secondary {
-			background-color: var(--secondary-bg);
+		.bg-custom-2 {
+			background-color: var(--bg-custom-2);
 		}
-		.bg-tertiary {
-			background-color: var(--tertiary-bg);
+		.bg-custom-3 {
+			background-color: var(--bg-custom-3);
 		}
 
 		.bg-gradient-1 {
@@ -134,6 +130,7 @@
 		.bg-gradient-3 {
 			background: var(--gradient-3);
 		}
+
 
 		/* Custom styles */
 		.hero {
@@ -206,7 +203,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: var(--dark);">
 	<div class="container">
-		<a class="navbar-brand" href="#">Color System</a>
+		<a class="navbar-brand" href="#">Color Palette Generator</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -231,7 +228,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6">
-				<h1 class="display-4 fw-bold mb-4">Custom Color System</h1>
+				<h1 class="display-4 fw-bold mb-4">Color Palette Generator</h1>
+				<h2 class="fw-bold mb-4">Bootstrap 5.3 Demo</h2>
 				<p class="lead mb-4">A beautiful and consistent color palette for your next project, integrated
 					seamlessly with Bootstrap.</p>
 				<div class="d-flex gap-3">
@@ -330,7 +328,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="card">
-						<div class="card-body bg-info">
+						<div class="card-body bg-info text-white">
 							<h5 class="card-title">Info Card</h5>
 							<p class="card-text">Example card with info background.</p>
 						</div>
@@ -426,11 +424,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h4>Color System Demo</h4>
+				<h4>Bootstrap Demo</h4>
 				<p>A beautiful and consistent color palette for your next project.</p>
 			</div>
 			<div class="col-md-6 text-md-end">
-				<p>Made with Bootstrap and custom color system</p>
+				<p>Made with Bootstrap and Color Palette Generator</p>
 			</div>
 		</div>
 	</div>

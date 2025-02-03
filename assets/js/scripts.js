@@ -29,31 +29,32 @@ const baseColors = {
 };
 
 const defaultThemeColors = {
-    primary:        '#0d6efd',
-    secondary:      '#6c757d',
-    success:        '#198754',
-    info:           '#0dcaf0',
-    warning:        '#ffc107',
-    danger:         '#dc3545',
-    light:          '#f8f9fa',
-    dark:           '#212529',
+    primary:   '#0d6efd',
+    secondary: '#6c757d',
+    success:   '#198754',
+    info:      '#0dcaf0',
+    warning:   '#ffc107',
+    danger:    '#dc3545',
+    light:     '#f8f9fa',
+    dark:      '#212529',
     // BG colors
     'custom-1':   '#ffffff',
-    'custom-2': '#f8f9fa',
-    'custom-3':  '#e9ecef',
-    'gradient-1':   { start: '#4f46e5', end: '#0ea5e9' },
-    'gradient-2':   { start: '#8b5cf6', end: '#d946ef' },
-    'gradient-3':   { start: '#06b6d4', end: '#3b82f6' },
+    'custom-2':   '#f8f9fa',
+    'custom-3':   '#e9ecef',
+    'gradient-1': { start: '#4f46e5', end: '#0ea5e9' },
+    'gradient-2': { start: '#8b5cf6', end: '#d946ef' },
+    'gradient-3': { start: '#06b6d4', end: '#3b82f6' },
 };
 
 function ColorPaletteGenerator() {
-    const [ showCSS, setShowCSS ]           = useState( false );
-    const [ showColors, setShowColors ]     = useState( false );
-    const [ showHTML, setShowHTML ]         = useState( false );
-    const [ copiedColor, setCopiedColor ]   = useState( '' );
-    const [ themeColors, setThemeColors ]   = useState( defaultThemeColors );
-    const [ activeTheme, setActiveTheme ]   = useState( null );
-    const [ gradientEdit, setGradientEdit ] = useState( {
+    const [ showCSS, setShowCSS ]             = useState( false );
+    const [ showColors, setShowColors ]       = useState( false );
+    const [ showBootstrap, setShowBootstrap ] = useState( false );
+    const [ showHTML, setShowHTML ]           = useState( false );
+    const [ copiedColor, setCopiedColor ]     = useState( '' );
+    const [ themeColors, setThemeColors ]     = useState( defaultThemeColors );
+    const [ activeTheme, setActiveTheme ]     = useState( null );
+    const [ gradientEdit, setGradientEdit ]   = useState( {
         name:     null,
         position: null
     } );
@@ -203,7 +204,7 @@ function ColorPaletteGenerator() {
     };
 
     const generateColors = () => {
-        let css = ':root {\n';
+        let css = '\n';
 
         // Add utility classes
         Object.entries( baseColors ).forEach( ( [ name ] ) => {
@@ -218,15 +219,62 @@ function ColorPaletteGenerator() {
             }
         } );
 
+        css += '\n\n';
+
+        return css;
+    };
+
+    const generateBootstrap = () => {
+        let css = ':root {\n';
+
+        // Add theme colors
+        Object.entries( themeColors )
+            .filter( ( [ name ] ) => !name.startsWith( 'gradient' ) )
+            .forEach( ( [ name, color ] ) => {
+                css += `  --${name}: ${color};\n`;
+            } );
+
+        // Add gradients
+        Object.entries( themeColors )
+            .filter( ( [ name ] ) => name.startsWith( 'gradient' ) )
+            .forEach( ( [ name, gradient ] ) => {
+                css += `  --${name}: linear-gradient(to right, ${gradient.start}, ${gradient.end});\n`;
+            } );
+
+        css += '}\n\n';
+
+        Object.entries( themeColors )
+            .filter( ( [ name ] ) => !name.startsWith( 'gradient' ) )
+            .filter( ( [ name ] ) => !name.startsWith( 'custom' ) )
+            .forEach( ( [ name ] ) => {
+                //css += `.text-${name} { color: var(--${name}); }\n`;
+                css += `.bg-${name} { background-color: var(--${name}) !important; }\n`;
+            } );
+
+        Object.entries( themeColors )
+            .filter( ( [ name ] ) => name.startsWith( 'custom' ) )
+            .forEach( ( [ name ] ) => {
+                //css += `.text-${name} { color: var(--${name}); }\n`;
+                css += `.bg-${name} { background-color: var(--${name}) }\n`;
+            } );
+
+        Object.keys( themeColors )
+            .filter( name => name.startsWith( 'gradient' ) )
+            .forEach( name => {
+                css += `.bg-${name} { background: var(--${name}); }\n`;
+            } );
+
+
+
         return css;
     };
 
     const handleColorSelect = ( color ) => {
-       // console.log( 'Color selected:', color );
-       // console.log( 'Gradient edit state:', gradientEdit );
+        // console.log( 'Color selected:', color );
+        // console.log( 'Gradient edit state:', gradientEdit );
 
         if ( gradientEdit.name && gradientEdit.position ) {
-          //  console.log( `Updating gradient ${gradientEdit.name} ${gradientEdit.position} to ${color}` );
+            //  console.log( `Updating gradient ${gradientEdit.name} ${gradientEdit.position} to ${color}` );
             setThemeColors( prev => {
                 // Create new gradient colors
                 const updatedGradient = {
@@ -240,7 +288,7 @@ function ColorPaletteGenerator() {
                     [ gradientEdit.name ]: updatedGradient
                 };
 
-             //   console.log( 'Updated theme colors:', newColors );
+                //   console.log( 'Updated theme colors:', newColors );
                 return newColors;
             } );
 
@@ -271,6 +319,9 @@ function ColorPaletteGenerator() {
                 </button>
                 <button style={{ marginLeft: '5px' }} className="button" onClick={() => setShowColors( !showColors )}>
                     {showColors ? 'Hide' : 'Show'} Color Classes
+                </button>
+                <button style={{ marginLeft: '5px' }} className="button" onClick={() => setShowBootstrap( !showBootstrap )}>
+                    {showBootstrap ? 'Hide' : 'Show'} Bootstrap Classes
                 </button>
                 <button style={{ marginLeft: '5px' }} className="button" onClick={() => setShowHTML( !showHTML )}>
                     {showHTML ? 'Hide' : 'Show'} HTML Example
@@ -314,6 +365,23 @@ function ColorPaletteGenerator() {
                             onClick={() => copyToClipboard( generateColors() )}
                         >
                             Copy Colors
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            {showBootstrap && (
+                <div className="section">
+                    <div style={{ position: 'relative' }}>
+                            <pre className="code-block">
+                                <code>{generateBootstrap()}</code>
+                            </pre>
+                        <button
+                            className="button"
+                            style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}
+                            onClick={() => copyToClipboard( generateBootstrap() )}
+                        >
+                            Copy Bootstrap
                         </button>
                     </div>
                 </div>
