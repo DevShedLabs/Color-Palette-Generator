@@ -6,10 +6,33 @@
 	<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 	<link rel="stylesheet" href="assets/css/styles.css">
+	<style>
+		#root {
+			margin-bottom: 100px;
+		}
+		footer {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background-color: rgba(255, 255, 255, 0.9);
+			padding: 10px;
+			text-align: center;
+		}
+
+	</style>
 </head>
 <body>
 <div id="root"></div>
 
 <script type="text/babel" src="assets/js/scripts.js"></script>
+<footer>
+	<p style="text-align: center;">&copy; 2025 Color Palette Generator. All rights reserved.</p>
+	<p style="text-align: center;">Created with love by <a href="https://jeffbehnke.com" target="_blank">Jeffrey Behnke</a> and <a title="AI-powered project management for modern development teams" href="https://devshed.io" target="_blank">DevShed.io</a>.</p>
+	<a href="https://devshed.io" target="_blank" style="position: fixed; bottom: 10px; right: 10px; display: inline-flex; align-items: center; background: #333; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; gap: 8px;">
+		DevShed.io Signup for Early-bird
+		<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+	</a>
+</footer>
 </body>
 </html>

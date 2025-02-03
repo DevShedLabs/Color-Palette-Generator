@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Color System Demo - Bootstrap Template</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		:root {
+			--primary:      #22143d;
+			--secondary:    #6c757d;
+			--success:      #115c39;
+			--info:         #a471f7;
+			--warning:      #fd7e14;
+			--danger:       #7c151f;
+			--light:        #f8f9fa;
+			--dark:         #212529;
+			--primary-bg:   #ffffff;
+			--secondary-bg: #e7e7e9;
+			--tertiary-bg:  #343438;
+			--gradient-1:   linear-gradient(to right, #4f46e5, #0ea5e9);
+			--gradient-2:   linear-gradient(to right, #22143d, #432776);
+			--gradient-3:   linear-gradient(to right, #0d0d0d, #333333);
+		}
+
+		.btn-primary {
+			background-color: var(--primary);
+		}
+
+		.btn-warning {
+			background-color: var(--warning);
+			color: white;
+		}
+
+		.btn-danger {
+			background-color: var(--danger);
+		}
+
+		.btn-success {
+			background-color: var(--success);
+		}
+
+		.btn-info {
+			background-color: var(--info);
+			color: white;
+		}
+
+
+		.alert-primary {
+			background-color: var(--primary);
+			color:            white;
+		}
+
+		.alert-warning {
+			background-color: var(--warning);
+			color:            white;
+		}
+
+		.alert-danger {
+			background-color: var(--danger);
+			color:            white;
+		}
+
+		.alert-success {
+			background-color: var(--success);
+			color:            white;
+		}
+
+		.alert-info {
+			background-color: var(--info);
+			color:            white;
+		}
+
+		.alert-dark {
+			background-color: var(--dark);
+			color:            white;
+		}
+
+		.bg-primary {
+			background-color: var(--primary) !important;
+		}
+
+		.bg-secondary {
+			background-color: var(--secondary) !important;
+		}
+
+		.bg-success {
+			background-color: var(--success) !important;
+		}
+
+		.bg-info {
+			background-color: var(--info) !important;
+		}
+
+		.bg-warning {
+			background-color: var(--warning) !important;
+		}
+
+		.danger {
+			color: var(--danger);
+		}
+
+		.bg-danger {
+			background-color: var(--danger) !important;
+		}
+
+		.bg-light {
+			background-color: var(--light) !important;
+		}
+
+		.bg-dark {
+			background-color: var(--dark) !important;
+		}
+
+		.bg-primary {
+			background-color: var(--primary-bg);
+		}
+
+		.bg-secondary {
+			background-color: var(--secondary-bg);
+		}
+		.bg-tertiary {
+			background-color: var(--tertiary-bg);
+		}
+
+		.bg-gradient-1 {
+			background: var(--gradient-1);
+		}
+
+		.bg-gradient-2 {
+			background: var(--gradient-2);
+		}
+
+		.bg-gradient-3 {
+			background: var(--gradient-3);
+		}
+
+		/* Custom styles */
+		.hero {
+			height:      100vh;
+			min-height:  500px;
+			background:  var(--gradient-2);
+			display:     flex;
+			align-items: center;
+		}
+
+		.section {
+			padding: 5rem 0;
+		}
+
+		.feature-icon {
+			width:           4rem;
+			height:          4rem;
+			border-radius:   0.75rem;
+			display:         flex;
+			align-items:     center;
+			justify-content: center;
+			margin-bottom:   1rem;
+		}
+
+		.component-demo {
+			padding:       2rem;
+			border-radius: 0.5rem;
+			margin-bottom: 1rem;
+		}
+
+		.gradient-card {
+			height:          200px;
+			border-radius:   1rem;
+			display:         flex;
+			align-items:     center;
+			justify-content: center;
+			color:           white;
+			font-family:     monospace;
+			transition:      transform 0.2s;
+		}
+
+		.gradient-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.footer {
+			color:      white;
+			padding:    3rem 0;
+			margin-top: 3rem;
+		}
+
+		/* Dark mode toggle styles */
+		.theme-toggle {
+			position: fixed;
+			bottom:   20px;
+			right:    20px;
+			z-index:  1000;
+		}
+
+		[data-bs-theme="dark"] .bg-light {
+			background-color: var(--dark) !important;
+		}
+
+		[data-bs-theme="dark"] .bg-gradient-3 {
+			background: #000 !important;
+		}
+	</style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: var(--dark);">
+	<div class="container">
+		<a class="navbar-brand" href="#">Color System</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="#features">Features</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#components">Components</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#gradients">Gradients</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero text-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<h1 class="display-4 fw-bold mb-4">Custom Color System</h1>
+				<p class="lead mb-4">A beautiful and consistent color palette for your next project, integrated
+					seamlessly with Bootstrap.</p>
+				<div class="d-flex gap-3">
+					<button class="btn btn-light btn-lg">Get Started</button>
+					<button class="btn btn-outline-light btn-lg">Learn More</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="section bg-light">
+	<div class="container">
+		<h2 class="text-center mb-5">Key Features</h2>
+		<div class="row g-4">
+			<div class="col-md-4">
+				<div class="feature-icon bg-primary text-white">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-palette" viewBox="0 0 16 16">
+						<path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+					</svg>
+				</div>
+				<h3>Custom Colors</h3>
+				<p>Carefully crafted color palette that maintains consistency across your application.</p>
+			</div>
+			<div class="col-md-4">
+				<div class="feature-icon bg-success text-white">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+						<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+					</svg>
+				</div>
+				<h3>Components</h3>
+				<p>Pre-styled Bootstrap components using our custom color system.</p>
+			</div>
+			<div class="col-md-4">
+				<div class="feature-icon bg-info text-white">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-brush" viewBox="0 0 16 16">
+						<path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.067 6.067 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.118 8.118 0 0 1-3.078.132 3.659 3.659 0 0 1-.562-.135 1.382 1.382 0 0 1-.466-.247.714.714 0 0 1-.204-.288.622.622 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896.126.007.243.025.348.048.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04zM4.705 11.912a1.23 1.23 0 0 0-.419-.1c-.246-.013-.573.05-.879.479-.197.275-.355.532-.5.777l-.105.177c-.106.181-.213.362-.32.528a3.39 3.39 0 0 1-.76.861c.69.112 1.736.111 2.657-.12.559-.139.843-.569.993-1.06a3.122 3.122 0 0 0 .126-.75l-.793-.792zm1.44.026c.12-.04.277-.1.458-.183a5.068 5.068 0 0 0 1.535-1.1c1.9-1.996 4.412-5.57 6.052-8.631-2.59 1.927-5.566 4.66-7.302 6.792-.442.543-.795 1.243-1.042 1.826-.121.288-.214.54-.275.72v.001l.575.575zm-4.973 3.04.007-.005a.031.031 0 0 1-.007.004zm3.582-3.043.002.001h-.002z" />
+					</svg>
+				</div>
+				<h3>Gradients</h3>
+				<p>Beautiful gradient presets that can be applied to any element.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Components Section -->
+<section id="components" class="section">
+	<div class="container">
+		<h2 class="text-center mb-5">Component Examples</h2>
+
+		<!-- Alerts -->
+		<div class="component-demo">
+			<h4 class="mb-3">Alerts</h4>
+			<div class="alert alert-primary" role="alert">A primary alert using our custom color.</div>
+			<div class="alert alert-success" role="alert">A success alert using our custom color.</div>
+			<div class="alert alert-danger" role="alert">A danger alert using our custom color.</div>
+			<div class="alert alert-warning" role="alert">A warning alert using our custom color.</div>
+			<div class="alert alert-info" role="alert">A info alert using our custom color.</div>
+			<div class="alert alert-dark" role="alert">A dark alert using our custom color.</div>
+		</div>
+
+		<!-- Buttons -->
+		<div class="component-demo">
+			<h4 class="mb-3">Buttons</h4>
+			<div class="d-flex gap-2 flex-wrap">
+				<button class="btn btn-primary">Primary</button>
+				<button class="btn btn-secondary">Secondary</button>
+				<button class="btn btn-success">Success</button>
+				<button class="btn btn-danger">Danger</button>
+				<button class="btn btn-warning">Warning</button>
+				<button class="btn btn-info">Info</button>
+			</div>
+		</div>
+
+		<!-- Cards -->
+		<div class="component-demo">
+			<h4 class="mb-3">Cards</h4>
+			<div class="row g-4">
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body bg-primary text-white">
+							<h5 class="card-title">Primary Card</h5>
+							<p class="card-text">Example card with primary background.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body bg-success text-white">
+							<h5 class="card-title">Success Card</h5>
+							<p class="card-text">Example card with success background.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body bg-info">
+							<h5 class="card-title">Info Card</h5>
+							<p class="card-text">Example card with info background.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Progress Bars -->
+		<div class="component-demo">
+			<h4 class="mb-3">Progress Bars</h4>
+			<div class="mb-3">
+				<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+					<div class="progress-bar bg-success" style="width: 25%">25%</div>
+				</div>
+			</div>
+			<div class="mb-3">
+				<div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+					<div class="progress-bar bg-info" style="width: 50%">50%</div>
+				</div>
+			</div>
+			<div class="mb-3">
+				<div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+					<div class="progress-bar bg-warning" style="width: 75%">75%</div>
+				</div>
+			</div>
+			<div class="mb-3">
+				<div class="progress" role="progressbar" aria-label="Danger example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+					<div class="progress-bar bg-danger" style="width: 100%">100%</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Gradients Section -->
+<section id="gradients" class="section bg-light">
+	<div class="container">
+		<h2 class="text-center mb-5">Custom Gradients</h2>
+		<div class="row g-4">
+			<div class="col-md-4">
+				<div class="gradient-card bg-gradient-1">
+					gradient-1
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="gradient-card bg-gradient-2">
+					gradient-2
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="gradient-card bg-gradient-3">
+					gradient-3
+				</div>
+			</div>
+		</div>
+
+		<!-- Gradient Usage Examples -->
+		<div class="mt-5">
+			<h3 class="text-center mb-4">Gradient Usage Examples</h3>
+			<div class="row g-4">
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body bg-gradient-1 text-white">
+							<h5 class="card-title">Gradient Card</h5>
+							<p class="card-text">Using gradient-1 as background.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body bg-gradient-2 text-white">
+							<h5 class="card-title">Gradient Card</h5>
+							<p class="card-text">Using gradient-2 as background.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body bg-gradient-3 text-white">
+							<h5 class="card-title">Gradient Card</h5>
+							<p class="card-text">Using gradient-3 as background.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer bg-gradient-3 text-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h4>Color System Demo</h4>
+				<p>A beautiful and consistent color palette for your next project.</p>
+			</div>
+			<div class="col-md-6 text-md-end">
+				<p>Made with Bootstrap and custom color system</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<!-- Theme Toggle Button -->
+<button class="btn btn-dark theme-toggle" id="themeToggle">
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars" viewBox="0 0 16 16">
+		<path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+		<path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+	</svg>
+</button>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript for theme toggle -->
+<script>
+	document.getElementById( 'themeToggle' ).addEventListener( 'click', function () {
+		const html = document.documentElement;
+		const icon = this.querySelector( 'svg' );
+		if ( html.getAttribute( 'data-bs-theme' ) === 'dark' ) {
+			html.setAttribute( 'data-bs-theme', 'light' );
+			icon.classList.replace( 'bi-sun', 'bi-moon-stars' );
+		} else {
+			html.setAttribute( 'data-bs-theme', 'dark' );
+			icon.classList.replace( 'bi-moon-stars', 'bi-sun' );
+		}
+	} );
+</script>
+</body>
+</html>

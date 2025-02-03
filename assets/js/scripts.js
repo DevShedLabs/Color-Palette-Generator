@@ -37,9 +37,10 @@ const defaultThemeColors = {
     danger:         '#dc3545',
     light:          '#f8f9fa',
     dark:           '#212529',
-    'primary-bg':   '#ffffff',
-    'secondary-bg': '#f8f9fa',
-    'tertiary-bg':  '#e9ecef',
+    // BG colors
+    'custom-1':   '#ffffff',
+    'custom-2': '#f8f9fa',
+    'custom-3':  '#e9ecef',
     'gradient-1':   { start: '#4f46e5', end: '#0ea5e9' },
     'gradient-2':   { start: '#8b5cf6', end: '#d946ef' },
     'gradient-3':   { start: '#06b6d4', end: '#3b82f6' },
@@ -136,25 +137,25 @@ function ColorPaletteGenerator() {
             '\n' +
             '\t<h2>Theme Colors</h2>\n' +
             '\t<div class="grid">\n' +
-            '\t\t<div class="color-block cl-bg-primary">primary</div>\n' +
-            '\t\t<div class="color-block cl-bg-secondary">secondary</div>\n' +
-            '\t\t<div class="color-block cl-bg-success">success</div>\n' +
-            '\t\t<div class="color-block cl-bg-danger">danger</div>\n' +
-            '\t\t<div class="color-block cl-bg-warning">warning</div>\n' +
-            '\t\t<div class="color-block cl-bg-info">info</div>\n' +
-            '\t\t<div class="color-block cl-bg-light">light</div>\n' +
-            '\t\t<div class="color-block cl-bg-dark">dark</div>\n' +
+            '\t\t<div class="color-block bg-primary">primary</div>\n' +
+            '\t\t<div class="color-block bg-secondary">secondary</div>\n' +
+            '\t\t<div class="color-block bg-success">success</div>\n' +
+            '\t\t<div class="color-block bg-danger">danger</div>\n' +
+            '\t\t<div class="color-block bg-warning">warning</div>\n' +
+            '\t\t<div class="color-block bg-info">info</div>\n' +
+            '\t\t<div class="color-block bg-light">light</div>\n' +
+            '\t\t<div class="color-block bg-dark">dark</div>\n' +
             '\t</div>\n' +
             '\n' +
             '\t<h2>Backgrounds</h2>\n' +
-            '\t\t<div class="color-block cl-bg-primary-bg">primary-bg</div>\n' +
-            '\t\t<div class="color-block cl-bg-secondary-bg">secondary-bg</div>\n' +
-            '\t\t<div class="color-block cl-bg-tertiary-bg">tertiary-bg</div>\n' +
+            '\t\t<div class="color-block bg-1">bg-1</div>\n' +
+            '\t\t<div class="color-block bg-2">bg-2</div>\n' +
+            '\t\t<div class="color-block bg-3">bg-3</div>\n' +
             '\n' +
             '\t<h2>Gradients</h2>\n' +
-            '\t<div class="gradient-block cl-bg-gradient-1">gradient-1</div>\n' +
-            '\t<div class="gradient-block cl-bg-gradient-2">gradient-2</div>\n' +
-            '\t<div class="gradient-block cl-bg-gradient-3">gradient-3</div>\n' +
+            '\t<div class="gradient-block bg-gradient-1">gradient-1</div>\n' +
+            '\t<div class="gradient-block bg-gradient-2">gradient-2</div>\n' +
+            '\t<div class="gradient-block bg-gradient-3">gradient-3</div>\n' +
             '</div>';
     };
     const generateCSS  = () => {
@@ -162,10 +163,10 @@ function ColorPaletteGenerator() {
 
         // Add base colors and their shades
         Object.entries( baseColors ).forEach( ( [ name, color ] ) => {
-            css += `  --cl-${name}: ${color};\n`;
+            css += `  --${name}: ${color};\n`;
             const shades = generateShades( color );
             Object.entries( shades ).forEach( ( [ shade, value ] ) => {
-                css += `  --cl-${name}-${shade}: ${value};\n`;
+                css += `  --${name}-${shade}: ${value};\n`;
             } );
         } );
 
@@ -173,14 +174,14 @@ function ColorPaletteGenerator() {
         Object.entries( themeColors )
             .filter( ( [ name ] ) => !name.startsWith( 'gradient' ) )
             .forEach( ( [ name, color ] ) => {
-                css += `  --cl-${name}: ${color};\n`;
+                css += `  --${name}: ${color};\n`;
             } );
 
         // Add gradients
         Object.entries( themeColors )
             .filter( ( [ name ] ) => name.startsWith( 'gradient' ) )
             .forEach( ( [ name, gradient ] ) => {
-                css += `  --cl-${name}: linear-gradient(to right, ${gradient.start}, ${gradient.end});\n`;
+                css += `  --${name}: linear-gradient(to right, ${gradient.start}, ${gradient.end});\n`;
             } );
 
         css += '}\n\n';
@@ -188,14 +189,14 @@ function ColorPaletteGenerator() {
         Object.entries( themeColors )
             .filter( ( [ name ] ) => !name.startsWith( 'gradient' ) )
             .forEach( ( [ name ] ) => {
-                css += `.cl-${name} { color: var(--cl-${name}); }\n`;
-                css += `.cl-bg-${name} { background-color: var(--cl-${name}); }\n`;
+                css += `.text-${name} { color: var(--${name}); }\n`;
+                css += `.bg-${name} { background-color: var(--${name}); }\n`;
             } );
 
         Object.keys( themeColors )
             .filter( name => name.startsWith( 'gradient' ) )
             .forEach( name => {
-                css += `.cl-bg-${name} { background: var(--cl-${name}); }\n`;
+                css += `.bg-${name} { background: var(--${name}); }\n`;
             } );
 
         return css;
@@ -206,13 +207,13 @@ function ColorPaletteGenerator() {
 
         // Add utility classes
         Object.entries( baseColors ).forEach( ( [ name ] ) => {
-            css += `.cl-${name} { color: var(--cl-${name}); }\n`;
-            css += `.cl-bg-${name} { background-color: var(--cl-${name}); }\n`;
+            css += `.text-${name} { color: var(--${name}); }\n`;
+            css += `.bg-${name} { background-color: var(--${name}); }\n`;
             for ( let i = 1; i <= 18; i++ ) {
                 const shade = i * 50;
                 if ( shade <= 900 ) {
-                    css += `.cl-${name}-${shade} { color: var(--cl-${name}-${shade}); }\n`;
-                    css += `.cl-bg-${name}-${shade} { background-color: var(--cl-${name}-${shade}); }\n`;
+                    css += `.text-${name}-${shade} { color: var(--${name}-${shade}); }\n`;
+                    css += `.bg-${name}-${shade} { background-color: var(--${name}-${shade}); }\n`;
                 }
             }
         } );
@@ -221,11 +222,11 @@ function ColorPaletteGenerator() {
     };
 
     const handleColorSelect = ( color ) => {
-        console.log( 'Color selected:', color );
-        console.log( 'Gradient edit state:', gradientEdit );
+       // console.log( 'Color selected:', color );
+       // console.log( 'Gradient edit state:', gradientEdit );
 
         if ( gradientEdit.name && gradientEdit.position ) {
-            console.log( `Updating gradient ${gradientEdit.name} ${gradientEdit.position} to ${color}` );
+          //  console.log( `Updating gradient ${gradientEdit.name} ${gradientEdit.position} to ${color}` );
             setThemeColors( prev => {
                 // Create new gradient colors
                 const updatedGradient = {
@@ -239,7 +240,7 @@ function ColorPaletteGenerator() {
                     [ gradientEdit.name ]: updatedGradient
                 };
 
-                console.log( 'Updated theme colors:', newColors );
+             //   console.log( 'Updated theme colors:', newColors );
                 return newColors;
             } );
 
